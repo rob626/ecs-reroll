@@ -462,13 +462,15 @@ class ECSRerollMonitor:
 def main():
     """Example usage of the ECS re-roll orchestrator"""
     
-    # Configuration
+    # Configuration - using existing AWS credentials
+    # Credentials can be provided via:
+    # - Environment variables: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_SESSION_TOKEN
+    # - AWS credentials file: ~/.aws/credentials
+    # - IAM instance role (if running on EC2)
     config = RerollConfig(
         cluster_name="my-ecs-cluster",
         asg_name="my-asg",
         new_ami_id="ami-0123456789abcdef0",
-        role_arn="arn:aws:iam::123456789012:role/my-role",
-        external_id="optional-external-id",
         region="us-east-1"
     )
     
